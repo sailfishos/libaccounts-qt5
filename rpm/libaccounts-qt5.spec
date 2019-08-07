@@ -1,7 +1,7 @@
 Name:           libaccounts-qt5
 Version:        1.13
 Release:        1
-License:        LGPLv2.1
+License:        LGPLv2
 Summary:        Accounts framework (Qt binding)
 Url:            https://gitlab.com/accounts-sso/libaccounts-qt
 Group:          System/Libraries
@@ -33,7 +33,6 @@ Headers and static libraries for the accounts.
 
 %package tests
 Summary:        Tests for accounts-qt5
-Group:          System/Libraries
 Requires:       %{name} = %{version}
 
 %description tests
@@ -100,5 +99,6 @@ mv %{buildroot}/%{_bindir}/accountstest %{buildroot}/opt/tests/%{name}/
 
 %files doc
 %defattr(-,root,root,-)
-%doc README COPYING
+%doc README 
+%license COPYING
 %{_datadir}/doc/*
