@@ -4,7 +4,6 @@ Release:        1
 License:        LGPLv2
 Summary:        Accounts framework (Qt binding)
 Url:            https://gitlab.com/accounts-sso/libaccounts-qt
-Group:          System/Libraries
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -19,7 +18,6 @@ Framework to provide the accounts.
 
 %package devel
 Summary:        Development files for accounts-qt5
-Group:          Development/Libraries
 Requires:       %{name} = %{version}
 Provides:       accounts-qt5-dev
 
@@ -35,7 +33,6 @@ Tests for accounts-qt5.
 
 %package doc
 Summary:        Documentation for accounts-qt5
-Group:          Documentation
 
 %description doc
 HTML documentation for the accounts.
@@ -67,6 +64,7 @@ mv %{buildroot}/%{_bindir}/accountstest %{buildroot}/opt/tests/%{name}/
 %files
 %defattr(-,root,root,-)
 %{_libdir}/libaccounts-qt5.so.*
+%license COPYING
 
 %files devel
 %defattr(-,root,root,-)
