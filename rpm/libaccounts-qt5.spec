@@ -3,7 +3,7 @@ Version:        1.13
 Release:        1
 License:        LGPLv2
 Summary:        Accounts framework (Qt binding)
-Url:            https://gitlab.com/accounts-sso/libaccounts-qt
+Url:            https://github.com/sailfishos/libaccounts-qt5
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  doxygen
 BuildRequires:  fdupes
