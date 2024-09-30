@@ -1,5 +1,5 @@
 Name:           libaccounts-qt5
-Version:        1.13
+Version:        1.17
 Release:        1
 License:        LGPLv2
 Summary:        Accounts framework (Qt binding)
@@ -43,7 +43,7 @@ sed -i 's,DATA_PATH = .*,DATA_PATH = /opt/tests/%{name}/data,' tests/tst_libacco
 
 %build
 %qmake5 CONFIG+=release
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake_install
@@ -62,12 +62,10 @@ mv %{buildroot}/%{_bindir}/accountstest %{buildroot}/opt/tests/%{name}/
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %{_libdir}/libaccounts-qt5.so.*
 %license COPYING
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/accounts-qt5/Accounts/Account
 %{_includedir}/accounts-qt5/Accounts/AccountService
 %{_includedir}/accounts-qt5/Accounts/Application
@@ -84,11 +82,9 @@ mv %{buildroot}/%{_bindir}/accountstest %{buildroot}/opt/tests/%{name}/
 %{_libdir}/cmake/AccountsQt5/AccountsQt5ConfigVersion.cmake
 
 %files tests
-%defattr(-,root,root,-)
 /opt/tests/%{name}
 
 %files doc
-%defattr(-,root,root,-)
 %doc README 
 %license COPYING
 %{_datadir}/doc/*
