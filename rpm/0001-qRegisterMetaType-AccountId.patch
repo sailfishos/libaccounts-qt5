@@ -1,0 +1,56 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Pekka Vuorela <pekka.vuorela@jolla.com>
+Date: Mon, 31 Mar 2025 15:42:21 +0300
+Subject: [PATCH] qRegisterMetaType AccountId
+
+"QObject::connect: Cannot queue arguments of type 'Accounts::AccountId'
+(Make sure 'Accounts::AccountId' is registered using qRegisterMetaType().)"
+
+The Manager here has signals for account modifications. Not spotting
+other such signals in the api, thus doing the registration in the
+manager.
+---
+ Accounts/manager.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/Accounts/manager.cpp b/Accounts/manager.cpp
+index 12d83d8..46c3ed2 100644
+--- a/Accounts/manager.cpp
++++ b/Accounts/manager.cpp
+@@ -90,6 +90,11 @@ namespace Accounts {
+ 
+ } //namespace Accounts
+ 
++static void registerTypes()
++{
++    qRegisterMetaType<Accounts::AccountId>("Accounts::AccountId");
++}
++
+ using namespace Accounts;
+ 
+ void Manager::Private::init(Manager *q, AgManager *manager)
+@@ -156,6 +161,7 @@ Manager::Manager(QObject *parent):
+         d->lastError = Error::DatabaseLocked;
+     }
+ 
++    registerTypes();
+ }
+ 
+ /*!
+@@ -184,6 +190,7 @@ Manager::Manager(const QString &serviceType, QObject *parent):
+         d->lastError = Error::DatabaseLocked;
+     }
+ 
++    registerTypes();
+ }
+ 
+ /*!
+@@ -209,6 +216,8 @@ Manager::Manager(Options options, QObject *parent):
+         d->lastError = Error(error);
+         g_error_free(error);
+     }
++
++    registerTypes();
+ }
+ 
+ /*!
