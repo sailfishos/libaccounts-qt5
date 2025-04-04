@@ -12,6 +12,7 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libaccounts-glib) >= 1.24
+Patch1: 0001-qRegisterMetaType-AccountId.patch
 
 %description
 Framework to provide the accounts.
@@ -38,7 +39,7 @@ Summary:        Documentation for accounts-qt5
 HTML documentation for the accounts.
 
 %prep
-%setup -q -n %{name}-%{version}/libaccounts-qt
+%autosetup -p1 -n %{name}-%{version}/libaccounts-qt
 sed -i 's,DATA_PATH = .*,DATA_PATH = /opt/tests/%{name}/data,' tests/tst_libaccounts.pro
 
 %build
