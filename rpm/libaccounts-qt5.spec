@@ -12,7 +12,6 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libaccounts-glib) >= 1.24
-Patch1: 0001-qRegisterMetaType-AccountId.patch
 
 %description
 Framework to provide the accounts.
